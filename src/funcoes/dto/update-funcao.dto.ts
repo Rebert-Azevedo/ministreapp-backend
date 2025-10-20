@@ -1,3 +1,4 @@
-export class UpdateFuncaoDto { 
-  nome?: string;
-}
+import { PartialType } from '@nestjs/mapped-types';
+import { CreateFuncaoDto } from './create-funcao.dto';
+
+export class UpdateEventoDto extends PartialType(CreateFuncaoDto) {}

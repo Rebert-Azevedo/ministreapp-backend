@@ -1,4 +1,4 @@
-import { PartialType } from '@nestjs/swagger';
+import { PartialType } from '@nestjs/mapped-types';
 import { CreateIndisponibilidadeDto } from './create-indisponibilidade.dto';
 
-export class UpdateIndisponibilidadeDto extends PartialType(CreateIndisponibilidadeDto) {}
+export class UpdateEventoDto extends PartialType(CreateIndisponibilidadeDto) {}

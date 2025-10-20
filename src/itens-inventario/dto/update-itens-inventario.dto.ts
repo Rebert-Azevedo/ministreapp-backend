@@ -1,9 +1,4 @@
-export class UpdateItemInventarioDto {
-  nome?: string;
-  descricao?: string;
-  quantidade?: number;
-  condicao?: 'bom' | 'reparo_necessario' | 'quebrado';
-  localizacao?: string;
-  dataAquisicao?: Date;
-  valorAquisicao?: number;
-}
+import { PartialType } from '@nestjs/mapped-types';
+import { CreateItemInventarioDto } from './create-itens-inventario.dto';
+
+export class UpdateItemInventarioDto extends PartialType(CreateItemInventarioDto) {}

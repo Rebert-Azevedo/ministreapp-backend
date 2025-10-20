@@ -1,9 +1,4 @@
-export class UpdateIgrejaDto {
-  nome?: string;
-  cnpj?: string;
-  endereco?: string;
-  contatoTelefone?: string;
-  contatoEmail?: string;
-  planoAssinatura?: string;
-  status?: string;
-}
+import { PartialType } from '@nestjs/mapped-types';
+import { CreateIgrejaDto } from './create-igreja.dto';
+
+export class UpdateEventoDto extends PartialType(CreateIgrejaDto) {}
