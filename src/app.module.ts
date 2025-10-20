@@ -12,7 +12,7 @@ import { MusicasModule } from './musicas/musicas.module';
 import { ItensInventarioModule } from './itens-inventario/itens-inventario.module';
 import { DespesasModule } from './despesas/despesas.module';
 import { FirebaseModule } from './firebase/firebase.module';
-import { IndisponibilidadeModule } from './indisponibilidade/indisponibilidades.module';
+import { IndisponibilidadesModule } from './indisponibilidades/indisponibilidades.module';
 
 @Module({
   imports: [
@@ -45,7 +45,7 @@ import { IndisponibilidadeModule } from './indisponibilidade/indisponibilidades.
     ItensInventarioModule,
     FirebaseModule,
     DespesasModule,
-    IndisponibilidadeModule,
+    IndisponibilidadesModule,
     ],
   controllers: [AppController],
   providers: [AppService],
