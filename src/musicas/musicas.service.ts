@@ -17,25 +17,16 @@ export class MusicasService {
 
   async create(createMusicaDto: CreateMusicaDto): Promise<Musica> {
     const { igrejaId, ...restoDoDto } = createMusicaDto;
-
     const igreja = await this.igrejaRepository.findOne({ where: { id: igrejaId } });
     if (!igreja) {
       throw new BadRequestException(`Igreja com ID #${igrejaId} não encontrada.`);
     }
-
-    const novaMusica = this.musicaRepository.create({
-      ...restoDoDto,
-      igreja,
-    });
-
+    const novaMusica = this.musicaRepository.create({ ...restoDoDto, igreja });
     return this.musicaRepository.save(novaMusica);
   }
 
   async findAllByIgreja(igrejaId: number): Promise<Musica[]> {
-    return this.musicaRepository.find({
-      where: { igrejaId },
-      order: { titulo: 'ASC' },
-    });
+    return this.musicaRepository.find({ where: { igrejaId }, order: { titulo: 'ASC' } });
   }
 
   async findOne(id: number): Promise<Musica> {
