@@ -1,5 +1,3 @@
-// src/usuarios/usuarios.service.ts
-
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -73,3 +71,4 @@ export class UsuariosService {
     return { message: `Usuário ${usuario.nome} (ID: ${id}) foi removido com sucesso.` };
   }
 }
+

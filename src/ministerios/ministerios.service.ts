@@ -13,6 +13,7 @@ import { MembroMinisterio } from './entities/membro-ministerio.entity';
 import { AddMembroDto } from './dto/add-membro.dto';
 import { Usuario } from '../usuarios/entities/usuario.entity';
 
+
 @Injectable()
 export class MinisteriosService {
   constructor(
@@ -127,5 +128,13 @@ export class MinisteriosService {
       throw new NotFoundException(`Membro com ID #${usuarioId} não encontrado neste ministério.`);
     }
     return { message: `Membro removido com sucesso do ministério.` };
+  }
+
+  async findMemberProfile(ministerioId: number, usuarioId: string): Promise<{ perfil: string } | null> {
+    const membership = await this.membroMinisterioRepository.findOne({
+      where: { ministerioId, usuarioId },
+      select: ['perfil'],
+    });
+    return membership ? { perfil: membership.perfil } : null;
   }
 }
