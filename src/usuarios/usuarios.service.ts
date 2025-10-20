@@ -1,3 +1,5 @@
+// src/usuarios/usuarios.service.ts
+
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -14,7 +16,7 @@ export class UsuariosService {
 
     @InjectRepository(Igreja)
     private readonly igrejaRepository: Repository<Igreja>,
-  ) { }
+  ) {}
 
   async create(createUsuarioDto: CreateUsuarioDto): Promise<Usuario> {
     const { igrejaId, ...restoDoDto } = createUsuarioDto;
@@ -34,6 +36,13 @@ export class UsuariosService {
 
   async findAll(): Promise<Usuario[]> {
     return this.usuarioRepository.find({ relations: ['igreja'] });
+  }
+
+  async findAllByIgreja(igrejaId: number): Promise<Usuario[]> {
+    return this.usuarioRepository.find({
+      where: { igrejaId },
+      order: { nome: 'ASC' },
+    });
   }
 
   async findOne(id: string): Promise<Usuario> {

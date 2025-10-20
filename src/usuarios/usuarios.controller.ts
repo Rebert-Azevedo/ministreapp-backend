@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
 import { UsuariosService } from './usuarios.service';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
@@ -15,6 +15,11 @@ export class UsuariosController {
   @Get()
   findAll() {
     return this.usuariosService.findAll();
+  }
+
+  @Get('por-igreja/:igrejaId')
+  findAllByIgreja(@Param('igrejaId', ParseIntPipe) igrejaId: number) {
+    return this.usuariosService.findAllByIgreja(igrejaId);
   }
 
   @Get(':id')
