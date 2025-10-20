@@ -1,9 +1,4 @@
 export class UpdateDespesaDto {
   status: 'aprovada' | 'rejeitada';
-  aprovadorUsuarioId: string; // O ID do líder que está aprovando/rejeitando
+  aprovadorUsuarioId: string; 
 }
-
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateDespesaDto } from './create-despesa.dto';
-
-export class UpdateEventoDto extends PartialType(CreateDespesaDto) {}
