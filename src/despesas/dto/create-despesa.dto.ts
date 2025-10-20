@@ -1,7 +1,23 @@
+import { IsString, IsNotEmpty, IsNumber, IsOptional, IsPositive } from 'class-validator';
+
 export class CreateDespesaDto {
+  @IsString()
+  @IsNotEmpty()
   descricao: string;
+
+  @IsOptional()
+  @IsString()
   categoria?: string;
+
+  @IsNumber()
+  @IsPositive()
   valor: number;
+
+  @IsNumber()
+  @IsNotEmpty()
   ministerioId: number;
-  solicitanteUsuarioId: string; // O ID do usuário logado que está fazendo a solicitação
+
+  @IsString()
+  @IsNotEmpty()
+  solicitanteUsuarioId: string;
 }

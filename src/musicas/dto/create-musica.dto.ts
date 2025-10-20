@@ -1,14 +1,23 @@
+import { IsString, IsNotEmpty, IsNumber, IsOptional, IsInt } from 'class-validator';
+
 export class CreateMusicaDto {
+  @IsString()
+  @IsNotEmpty()
   titulo: string;
+
+  @IsOptional()
+  @IsString()
   artista?: string;
+
+  @IsOptional()
+  @IsString()
   tomOriginal?: string;
+
+  @IsOptional()
+  @IsInt()
   bpm?: number;
-  tags?: object;
-  letra?: string;
-  cifra?: string;
-  letraUrl?: string;
-  cifraUrl?: string;
-  youtubeUrl?: string;
-  spotifyUrl?: string;
+
+  @IsNumber()
+  @IsNotEmpty()
   igrejaId: number;
 }
