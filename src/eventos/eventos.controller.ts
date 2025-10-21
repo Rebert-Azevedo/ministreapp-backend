@@ -33,4 +33,40 @@ export class EventosController {
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.eventosService.remove(id);
   }
+
+  @Post(':id/escala')
+  adicionarMembroEscala(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() dto: AddMembroEscalaDto,
+  ) {
+    return this.eventosService.adicionarMembroEscala(id, dto);
+  }
+
+  @Get(':id/escala')
+  listarMembrosEscala(@Param('id', ParseIntPipe) id: number) {
+    return this.eventosService.listarMembrosEscala(id);
+  }
+
+  @Delete('escala/:escalaMembroId')
+  removerMembroEscala(@Param('escalaMembroId', ParseIntPipe) escalaMembroId: number) {
+    return this.eventosService.removerMembroEscala(escalaMembroId);
+  }
+
+  @Post(':id/repertorio')
+  adicionarMusicaRepertorio(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() dto: AddMusicaRepertorioDto,
+  ) {
+    return this.eventosService.adicionarMusicaRepertorio(id, dto);
+  }
+
+  @Get(':id/repertorio')
+  listarRepertorio(@Param('id', ParseIntPipe) id: number) {
+    return this.eventosService.listarRepertorio(id);
+  }
+
+  @Delete('repertorio/:repertorioId')
+  removerMusicaRepertorio(@Param('repertorioId', ParseIntPipe) repertorioId: number) {
+    return this.eventosService.removerMusicaRepertorio(repertorioId);
+  }
 }
